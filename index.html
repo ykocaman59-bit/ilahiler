@@ -3,17 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Huzur Pınarı - İlahiler ve Esmaül Hüsna</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Esmaül Hüsna - İlahi Uygulaması</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* --- INSTAGRAM TARZI GİRİŞ ANİMASYONU --- */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(135deg, #091921, #1b3b4f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .splash-content {
+            text-align: center;
+            color: #fff;
+            animation: instagramZoom 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .app-icon {
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, #d4af37, #aa771c);
+            border-radius: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            font-size: 50px;
+        }
+
+        .splash-content h1 {
+            font-size: 26px;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+            color: #f3e5ab;
+        }
+
+        .splash-content p {
+            font-size: 13px;
+            color: #a0aec0;
+        }
+
+        @keyframes instagramZoom {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- ANA SAYFA --- */
+        .hidden {
+            display: none !important;
+        }
+
+        .hero-section {
+            height: 220px;
+            background: linear-gradient(135deg, #1b3b4f, #091921);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-overlay {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .hero-overlay h1 {
+            font-size: 24px;
+            margin-bottom: 6px;
+            color: #f3e5ab;
+        }
+
+        .hero-overlay p {
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        /* İÇERİK ALANI */
+        .container {
+            max-width: 650px;
+            margin: -25px auto 30px auto;
+            padding: 0 15px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .player-section {
+            background: #fff;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .player-section h2 {
+            font-size: 20px;
+            color: #1b3b4f;
+            margin-bottom: 15px;
+        }
+
+        .lyrics-box {
+            background: #fdfbf7;
+            border-left: 4px solid #d4af37;
+            padding: 22px;
+            min-height: 160px;
+            max-height: 280px;
+            overflow-y: auto;
+            text-align: left;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            white-space: pre-line;
+            font-weight: 500;
+        }
+
+        /* KONTROL BUTONLARI */
+        .controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn {
+            background-color: #1b3b4f;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: #091921;
+        }
+
+        .btn.secondary {
+            background-color: #d4af37;
+            color: #fff;
+        }
+
+        .btn.secondary:hover {
+            background-color: #b8972b;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- GİRİŞ ANİMASYONU (Instagram Tarzı) -->
+    <!-- GİRİŞ ANİMASYONU -->
     <div id="splash-screen">
         <div class="splash-content">
-            <img src="watermarked_img_14307815405814033485.png" alt="Uygulama Logosu" class="splash-logo">
+            <div class="app-icon">☪</div>
             <h1>Huzur Pınarı</h1>
-            <p>Esmaül Hüsna & İlahiler</p>
+            <p>Esmaül Hüsna İlahileri</p>
         </div>
     </div>
 
@@ -21,27 +194,114 @@
     <div id="main-content" class="hidden">
         <header class="hero-section">
             <div class="hero-overlay">
-                <h1>Kalplere Huzur İlahiler</h1>
-                <p>Allah'ın Güzel İsimleriyle Manevi Yolculuk</p>
+                <h1>Esmaül Hüsna İlahi Halkası</h1>
+                <p>Allah'ın Mübarek İsimleriyle Kalplere Şifa</p>
             </div>
         </header>
 
         <main class="container">
             <section class="player-section">
-                <h2 id="ilahi-title">Allah'ın 99 İsmi ve İlahi</h2>
+                <h2 id="ilahi-title">Yükleniyor...</h2>
                 
                 <div class="lyrics-box" id="lyrics-content">
-                    <!-- İlahi sözleri buraya gelecek -->
+                    İlahi sözleri hazırlanıyor...
                 </div>
 
                 <div class="controls">
                     <button id="play-btn" class="btn">▶ İlahiyi Sesli Oku / Dinle</button>
-                    <button id="next-btn" class="btn secondary">Sonraki Bölüm ➡</button>
+                    <button id="next-btn" class="btn secondary">Sonraki İsimlere Geç ➡</button>
                 </div>
             </section>
         </main>
     </div>
 
-    <script src="app.js"></script>
+    <script>
+        // Giriş animasyonu (2.5 saniye sonra ana sayfayı açar)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                const mainContent = document.getElementById('main-content');
+                
+                splash.style.opacity = '0';
+                splash.style.visibility = 'hidden';
+                mainContent.classList.remove('hidden');
+            }, 2500);
+        });
+
+        // Esmaül Hüsna ve İlahi Akışı
+        const esmaIlahileri = [
+            {
+                title: "Giriş ve İlk İsimler: Allah, Rahman, Rahim",
+                text: "Dillerde ezan, kalpte iman,\nAnılır ismiyle her an.\nGel ey gönül zikreyle Rahman,\n\nYa Allah sen başımızda tacımız,\nYa Rahman sensin bütün ilacımız,\nYa Rahim merhametin derya deniz,\nSensiz bizim halimiz nice nice..."
+            },
+            {
+                title: "Kaddüs, Selam ve Mümin İsimleri",
+                text: "El-Kuddüs, El-Selam nurunla doldu âlem,\nYazmaz bunu gayrı başka bir kalem.\n\nYa Kuddüs, kalpleri tertemiz eyle,\nYa Selam, selamete erdir bizi söyle,\nYa Mümin, inananların sığınağı sensin,\nKalplerdeki bu sönmeyen ışık sensin."
+            },
+            {
+                title: "Aziz, Cebbar ve Mütekebbir İsimleri",
+                text: "Ya Aziz, yüceler yücesi şanlı sultan,\nSeninle dirilir mahlukat, canlanan!\n\nYa Cebbar, kırılan kalpleri onaran,\nYa Mütekebbir, büyüklük ancak sana yaraşan,\nZikrinle çarpar bu garip yürekler,\nKabul eyle Allah'ım bütün dilekler."
+            },
+            {
+                title: "Hâlık, Bari ve Musavvir İsimleri",
+                text: "Yarattın bu kâinatı en güzel biçimde,\nHâlık sensin bu varlık denizinde.\n\nYa Hâlık, Ya Bari, Ya Musavvir,\nGüzelliğin eseri her yerde aşikâr, munis ve bir!\nEsmaül Hüsna dillerden düşmesin,\nBu ilahi aşk kalpten hiç silinmesin..."
+            }
+        ];
+
+        let currentIndex = 0;
+        const titleElement = document.getElementById('ilahi-title');
+        const lyricsElement = document.getElementById('lyrics-content');
+        const playBtn = document.getElementById('play-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        function updateContent() {
+            titleElement.textContent = esmaIlahileri[currentIndex].title;
+            lyricsElement.textContent = esmaIlahileri[currentIndex].text;
+        }
+
+        updateContent();
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % esmaIlahileri.length;
+            updateContent();
+            
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                playBtn.textContent = "▶ İlahiyi Sesli Oku / Dinle";
+            }
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (!('speechSynthesis' in window)) {
+                alert("Tarayıcınız seslendirme özelliğini desteklemiyor.");
+                return;
+            }
+
+            if (window.speechSynthesis.speaking) {
+                window.speechSynthesis.cancel();
+                playBtn.textContent = "▶ İlahiyi Sesli Oku / Dinle";
+                return;
+            }
+
+            const metin = titleElement.textContent + ". " + lyricsElement.textContent;
+            const utterance = new SpeechSynthesisUtterance(metin);
+            
+            utterance.lang = 'tr-TR';
+            utterance.rate = 0.82; // Yavaş ve huzurlu ilahi temposu
+            utterance.pitch = 0.85; // Tok ses tonu
+
+            playBtn.textContent = "⏸ Durdur";
+
+            utterance.onend = () => {
+                playBtn.textContent = "▶ İlahiyi Sesli Oku / Dinle";
+            };
+
+            utterance.onerror = () => {
+                playBtn.textContent = "▶ İlahiyi Sesli Oku / Dinle";
+            };
+
+            window.speechSynthesis.speak(utterance);
+        });
+    </script>
 </body>
 </html>
