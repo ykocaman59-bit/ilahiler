@@ -1056,5 +1056,699 @@
 
             audio: "audio/allahin-99-ismi.mp3",
 
-            lyrics: `
-            
+            lyrics: 
+
+Açılır gönül kapısı zikrinle ey Rahmân,
+Anılır güzel ismin her an, her zaman.
+
+Allah, Rahmân, Rahîm, Melik,
+Kuddûs, Selâm, Mü'min, Müheymin,
+Azîz, Cebbâr, Mütekebbir,
+Hâlık, Bârî, Musavvir.
+
+Gönüllerde yankılanır güzel isimlerin,
+Dillerde zikredilir yüce Esmâların.
+
+Gaffâr, Kahhâr, Vehhâb, Rezzâk,
+Fettâh, Alîm, Kâbıd, Bâsıt,
+Hâfıd, Râfi, Muizz, Müzill,
+Semî, Basîr, Hakem, Adl.
+
+Ey Latîf, ey Habîr, ey Halîm,
+Ey Azîm, ey Gafûr, ey Şekûr,
+Ey Aliyy, ey Kebîr, ey Hafîz,
+Ey Mukît, ey Hasîb.
+
+Celâlin karşısında eğilir taşlar,
+Cemâlinle aydınlanır karanlıklar.
+
+Celîl, Kerîm, Rakîb, Mucîb,
+Vâsi, Hakîm, Vedûd, Mecîd,
+Bâis, Şehîd, Hakk, Vekîl,
+Kaviyy, Metîn, Velî, Hamîd.
+
+Hayat veren Sensin, ey Yüce Mevlâ,
+Şifa veren Sensin gönüllere derman.
+
+Muhsî, Mübdi, Muîd, Muhyî,
+Mümît, Hayy, Kayyûm, Vâcid,
+Mâcid, Vâhid, Ehad, Samed,
+Kâdir, Muktedir, Mukaddim, Muahhir.
+
+Evvel Sensin, Âhir Sensin,
+Zâhir Sensin, Bâtın Sensin.
+Vâlî, Müteâlî, Berr, Tevvâb,
+Müntekim, Afûv, Raûf.
+
+Mâlikü'l-Mülk, Zü'l-Celâli ve'l-İkrâm,
+Muksit, Câmi, Ganî, Muğnî,
+Mâni, Dârr, Nâfi, Nûr,
+Hâdî, Bedî, Bâkî, Vâris,
+Reşîd ve Sabûr.
+
+Ey Rabbimiz, güzel isimlerinle
+Kalplerimizi nurlandır.
+
+Esmâü'l-Hüsnâ dillerden düşmesin,
+Bu güzel zikir gönüllerden silinmesin.
+
+Allah'ım,
+isimlerinle huzur bulalım,
+zikrinle gönüllerimizi dirilt.
+
+Âmin.
+\`
+},
+
+            {
+                id: 2,
+
+                title: "Yeni İlahi",
+
+                subtitle: "Yakında",
+
+                icon: "🌙",
+
+                audio: "audio/ilahi-2.mp3",
+
+                lyrics: `
+
+
+Bu ilahinin sözleri yakında eklenecek.
+
+Huzur Pınarı'nda yeni eserler
+hazırlanıyor.
+\`
+},
+
+            {
+                id: 3,
+
+                title: "Gönül Duası",
+
+                subtitle: "Yakında",
+
+                icon: "🌿",
+
+                audio: "audio/ilahi-3.mp3",
+
+                lyrics: `
+
+
+Bu ilahinin sözleri yakında eklenecek.
+\`
+}
+
+        ];
+
+
+        /*
+         * =====================================================
+         * ELEMENTLER
+         * =====================================================
+         */
+
+        const splashScreen =
+            document.getElementById("splash-screen");
+
+        const app =
+            document.getElementById("app");
+
+        const tracksContainer =
+            document.getElementById("tracks");
+
+        const trackCount =
+            document.getElementById("track-count");
+
+        const audio =
+            document.getElementById("audio-player");
+
+        const player =
+            document.getElementById("player");
+
+        const playerTitle =
+            document.getElementById("player-title");
+
+        const playerSubtitle =
+            document.getElementById("player-subtitle");
+
+        const miniArt =
+            document.getElementById("mini-art");
+
+        const mainPlayBtn =
+            document.getElementById("main-play-btn");
+
+        const prevBtn =
+            document.getElementById("prev-btn");
+
+        const nextBtn =
+            document.getElementById("next-btn");
+
+        const progress =
+            document.getElementById("progress");
+
+        const progressBar =
+            document.getElementById("progress-bar");
+
+        const currentTime =
+            document.getElementById("current-time");
+
+        const duration =
+            document.getElementById("duration");
+
+        const audioError =
+            document.getElementById("audio-error");
+
+        const lyricsPanel =
+            document.getElementById("lyrics-panel");
+
+        const lyricsTitle =
+            document.getElementById("lyrics-title");
+
+        const lyricsContent =
+            document.getElementById("lyrics-content");
+
+        const lyricsOpen =
+            document.getElementById("lyrics-open");
+
+        const closeLyrics =
+            document.getElementById("close-lyrics");
+
+
+        let currentIndex = 0;
+
+
+        /*
+         * =====================================================
+         * SPLASH
+         * =====================================================
+         */
+
+        window.addEventListener("load", () => {
+
+            setTimeout(() => {
+
+                splashScreen.classList.add("hide");
+
+                app.classList.add("visible");
+
+            }, 2500);
+
+        });
+
+
+        /*
+         * =====================================================
+         * ZAMAN FORMATLAMA
+         * =====================================================
+         */
+
+        function formatTime(seconds) {
+
+            if (!Number.isFinite(seconds)) {
+                return "0:00";
+            }
+
+            const minutes =
+                Math.floor(seconds / 60);
+
+            const remaining =
+                Math.floor(seconds % 60);
+
+            return (
+                minutes +
+                ":" +
+                String(remaining).padStart(2, "0")
+            );
+        }
+
+
+        /*
+         * =====================================================
+         * İLAHİ KARTLARINI OLUŞTUR
+         * =====================================================
+         */
+
+        function renderTracks() {
+
+            tracksContainer.innerHTML = "";
+
+            trackCount.textContent =
+                tracksData.length + " eser";
+
+
+            tracksData.forEach((track, index) => {
+
+                const card =
+                    document.createElement("div");
+
+                card.className = "track-card";
+
+                card.dataset.index = index;
+
+
+                card.innerHTML = `
+
+                    <div class="track-art">
+                        ${track.icon}
+                    </div>
+
+                    <div class="track-details">
+
+                        <h4>
+                            ${track.title}
+                        </h4>
+
+                        <p>
+                            ${track.subtitle}
+                        </p>
+
+                    </div>
+
+                    <button
+                        class="track-play"
+                        aria-label="İlahiyi oynat">
+                        ▶
+                    </button>
+
+                `;
+
+
+                card.addEventListener("click", () => {
+
+                    loadTrack(index, true);
+
+                });
+
+
+                tracksContainer.appendChild(card);
+
+            });
+
+        }
+
+
+        renderTracks();
+
+
+        /*
+         * =====================================================
+         * İLAHİ YÜKLE
+         * =====================================================
+         */
+
+        function loadTrack(index, autoPlay = false) {
+
+            if (index < 0) {
+                index = tracksData.length - 1;
+            }
+
+            if (index >= tracksData.length) {
+                index = 0;
+            }
+
+
+            currentIndex = index;
+
+            const track =
+                tracksData[currentIndex];
+
+
+            audioError.classList.remove("show");
+
+
+            audio.pause();
+
+            audio.currentTime = 0;
+
+            audio.src = track.audio;
+
+            audio.load();
+
+
+            playerTitle.textContent =
+                track.title;
+
+            playerSubtitle.textContent =
+                track.subtitle;
+
+            miniArt.textContent =
+                track.icon;
+
+
+            player.classList.add("show");
+
+
+            updateActiveCard();
+
+
+            updateLyrics();
+
+
+            mainPlayBtn.textContent = "▶";
+
+            progress.style.width = "0%";
+
+            currentTime.textContent = "0:00";
+
+            duration.textContent = "0:00";
+
+
+            if (autoPlay) {
+
+                playAudio();
+
+            }
+
+        }
+
+
+        /*
+         * =====================================================
+         * SESİ OYNAT
+         * =====================================================
+         */
+
+        function playAudio() {
+
+            audio.play()
+                .then(() => {
+
+                    mainPlayBtn.textContent = "⏸";
+
+                })
+                .catch(() => {
+
+                    audioError.classList.add("show");
+
+                    mainPlayBtn.textContent = "▶";
+
+                });
+
+        }
+
+
+        /*
+         * =====================================================
+         * PLAY / PAUSE
+         * =====================================================
+         */
+
+        mainPlayBtn.addEventListener("click", () => {
+
+            if (!audio.src) {
+
+                loadTrack(currentIndex, true);
+
+                return;
+
+            }
+
+
+            if (audio.paused) {
+
+                playAudio();
+
+            } else {
+
+                audio.pause();
+
+            }
+
+        });
+
+
+        audio.addEventListener("play", () => {
+
+            mainPlayBtn.textContent = "⏸";
+
+            updateActiveCard();
+
+        });
+
+
+        audio.addEventListener("pause", () => {
+
+            mainPlayBtn.textContent = "▶";
+
+            updateActiveCard();
+
+        });
+
+
+        /*
+         * =====================================================
+         * SÜRE
+         * =====================================================
+         */
+
+        audio.addEventListener("loadedmetadata", () => {
+
+            duration.textContent =
+                formatTime(audio.duration);
+
+        });
+
+
+        /*
+         * =====================================================
+         * İLERLEME
+         * =====================================================
+         */
+
+        audio.addEventListener("timeupdate", () => {
+
+            if (!audio.duration) {
+                return;
+            }
+
+
+            const percentage =
+                (audio.currentTime / audio.duration) * 100;
+
+
+            progress.style.width =
+                percentage + "%";
+
+
+            currentTime.textContent =
+                formatTime(audio.currentTime);
+
+        });
+
+
+        /*
+         * =====================================================
+         * PROGRESS BAR'A TIKLAMA
+         * =====================================================
+         */
+
+        progressBar.addEventListener("click", (event) => {
+
+            if (!audio.duration) {
+                return;
+            }
+
+
+            const rect =
+                progressBar.getBoundingClientRect();
+
+
+            const clickPosition =
+                event.clientX - rect.left;
+
+
+            const percentage =
+                clickPosition / rect.width;
+
+
+            audio.currentTime =
+                percentage * audio.duration;
+
+        });
+
+
+        /*
+         * =====================================================
+         * ÖNCEKİ
+         * =====================================================
+         */
+
+        prevBtn.addEventListener("click", () => {
+
+            loadTrack(currentIndex - 1, true);
+
+        });
+
+
+        /*
+         * =====================================================
+         * SONRAKİ
+         * =====================================================
+         */
+
+        nextBtn.addEventListener("click", () => {
+
+            loadTrack(currentIndex + 1, true);
+
+        });
+
+
+        /*
+         * =====================================================
+         * İLAHİ BİTİNCE SONRAKİNE GEÇ
+         * =====================================================
+         */
+
+        audio.addEventListener("ended", () => {
+
+            loadTrack(currentIndex + 1, true);
+
+        });
+
+
+        /*
+         * =====================================================
+         * AKTİF KART
+         * =====================================================
+         */
+
+        function updateActiveCard() {
+
+            const cards =
+                document.querySelectorAll(".track-card");
+
+
+            cards.forEach((card, index) => {
+
+                const button =
+                    card.querySelector(".track-play");
+
+
+                if (index === currentIndex) {
+
+                    card.classList.add("active");
+
+                    button.textContent =
+                        audio.paused ? "▶" : "⏸";
+
+                } else {
+
+                    card.classList.remove("active");
+
+                    button.textContent = "▶";
+
+                }
+
+            });
+
+        }
+
+
+        /*
+         * =====================================================
+         * SÖZLERİ GÜNCELLE
+         * =====================================================
+         */
+
+        function updateLyrics() {
+
+            const track =
+                tracksData[currentIndex];
+
+
+            lyricsTitle.textContent =
+                track.title;
+
+
+            lyricsContent.textContent =
+                track.lyrics;
+
+        }
+
+
+        /*
+         * =====================================================
+         * SÖZLERİ AÇ
+         * =====================================================
+         */
+
+        lyricsOpen.addEventListener("click", () => {
+
+            updateLyrics();
+
+            lyricsPanel.classList.add("show");
+
+        });
+
+
+        /*
+         * =====================================================
+         * SÖZLERİ KAPAT
+         * =====================================================
+         */
+
+        closeLyrics.addEventListener("click", () => {
+
+            lyricsPanel.classList.remove("show");
+
+        });
+
+
+        lyricsPanel.addEventListener("click", (event) => {
+
+            if (event.target === lyricsPanel) {
+
+                lyricsPanel.classList.remove("show");
+
+            }
+
+        });
+
+
+        /*
+         * =====================================================
+         * ESC İLE KAPAT
+         * =====================================================
+         */
+
+        document.addEventListener("keydown", (event) => {
+
+            if (event.key === "Escape") {
+
+                lyricsPanel.classList.remove("show");
+
+            }
+
+        });
+
+
+        /*
+         * =====================================================
+         * SES DOSYASI HATASI
+         * =====================================================
+         */
+
+        audio.addEventListener("error", () => {
+
+            audioError.classList.add("show");
+
+            mainPlayBtn.textContent = "▶";
+
+        });
+
+
+        /*
+         * =====================================================
+         * BAŞLANGIÇTA İLK İLAHİYİ HAZIRLA
+         * =====================================================
+         */
+
+        loadTrack(0, false);
+
+    </script>
+
+
+</body>
+</html>
+    
