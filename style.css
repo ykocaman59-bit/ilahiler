@@ -11,56 +11,55 @@ body {
     overflow-x: hidden;
 }
 
-/* GİRİŞ ANİMASYONU */
+/* GİRİŞ ANİMASYONU (Instagram Tarzı Pürüzsüz Geçiş) */
 #splash-screen {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    background: linear-gradient(135deg, #071118, #112233, #1a3644);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    animation: fadeOut 0.8s ease 2.5s forwards;
+    z-index: 99999;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
 .splash-content {
     text-align: center;
     color: #fff;
-    animation: scaleUp 1.2s ease-in-out;
+    animation: instagramZoom 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .splash-logo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    border-radius: 28px; /* Modern uygulama simgesi köşeleri */
     object-fit: cover;
-    margin-bottom: 15px;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    margin-bottom: 20px;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+    border: 2px solid #d4af37;
 }
 
 .splash-content h1 {
-    font-size: 24px;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
+    font-size: 28px;
+    letter-spacing: 1.2px;
+    margin-bottom: 6px;
+    color: #f3e5ab;
+    font-weight: 600;
 }
 
 .splash-content p {
     font-size: 14px;
     color: #b0c4de;
+    letter-spacing: 0.5px;
 }
 
-/* ANİMASYON KEYFRAMES */
-@keyframes scaleUp {
+/* Animasyon Efekti */
+@keyframes instagramZoom {
     0% { transform: scale(0.6); opacity: 0; }
-    50% { transform: scale(1.05); opacity: 1; }
     100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
 }
 
 /* ANA SAYFA */
@@ -69,7 +68,7 @@ body {
 }
 
 .hero-section {
-    height: 250px;
+    height: 220px;
     background: url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
     position: relative;
     display: flex;
@@ -80,7 +79,7 @@ body {
 }
 
 .hero-overlay {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 100%;
     display: flex;
@@ -91,19 +90,19 @@ body {
 }
 
 .hero-overlay h1 {
-    font-size: 26px;
-    margin-bottom: 8px;
+    font-size: 24px;
+    margin-bottom: 6px;
 }
 
 .hero-overlay p {
-    font-size: 14px;
-    color: #ddd;
+    font-size: 13px;
+    color: #e2e8f0;
 }
 
 /* İÇERİK ALANI */
 .container {
     max-width: 600px;
-    margin: -30px auto 30px auto;
+    margin: -25px auto 30px auto;
     padding: 0 15px;
     position: relative;
     z-index: 10;
@@ -112,15 +111,15 @@ body {
 .player-section {
     background: #fff;
     padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     text-align: center;
 }
 
 .player-section h2 {
-    font-size: 20px;
-    color: #2c5364;
-    margin-bottom: 20px;
+    font-size: 19px;
+    color: #1c3d5a;
+    margin-bottom: 15px;
 }
 
 .lyrics-box {
@@ -128,36 +127,42 @@ body {
     border-left: 4px solid #d4af37;
     padding: 20px;
     min-height: 150px;
-    max-height: 250px;
+    max-height: 240px;
     overflow-y: auto;
     text-align: left;
     font-size: 16px;
-    line-height: 1.6;
-    color: #444;
+    line-height: 1.7;
+    color: #333;
     margin-bottom: 20px;
-    border-radius: 4px;
+    border-radius: 6px;
+    white-space: pre-line;
 }
 
 /* BUTONLAR */
 .controls {
     display: flex;
-    gap: 10px;
+    gap: 12px;
     justify-content: center;
 }
 
 .btn {
-    background-color: #2c5364;
+    background-color: #1c3d5a;
     color: white;
     border: none;
     padding: 12px 20px;
     font-size: 14px;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.1s;
+    font-weight: 600;
+}
+
+.btn:active {
+    transform: scale(0.97);
 }
 
 .btn:hover {
-    background-color: #1a323b;
+    background-color: #0d2335;
 }
 
 .btn.secondary {
@@ -167,5 +172,4 @@ body {
 
 .btn.secondary:hover {
     background-color: #b8972b;
-  }
-
+}
