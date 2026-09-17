@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esmaül Hüsna - İlahi Çalar</title>
+    <title>Huzur Pınarı - Esmaül Hüsna İlahisi</title>
     <style>
         * {
             margin: 0;
@@ -183,11 +183,10 @@
             
             <div class="track-info">
                 <h1>Allah'ın 99 İsmi</h1>
-                <p>Esmaül Hüsna İlahisi & Ney Altyapısı</p>
+                <p>Müzikli İlahi Yayını</p>
             </div>
 
-            <!-- Arka Planda Çalacak Dini Müzik (Ney Enstrümantal Altyapı) -->
-            <!-- İleride kendi mp3 dosyanı buraya 'muzik.mp3' şeklinde bağlayabilirsin -->
+            <!-- Arka Planda Çalacak Dini Jenerik Altyapı -->
             <audio id="bg-music" loop>
                 <source src="https://actions.google.com/sounds/v1/ambiences/meditative_bell.ogg" type="audio/ogg">
             </audio>
@@ -255,14 +254,14 @@ Ya Hadi, Ya Badi, Ya Baki, Ya Varis,
 Ya Resid, Ya Sabur...
 
 Esmaül Hüsna dillerden hiç düşmesin,
-Bis ilahi aşk kalpten silinmesin...
+Bu ilahi aşk kalpten silinmesin...
             </div>
 
             <!-- Oynatıcı Kontrolü -->
             <div class="play-btn-container">
                 <button class="big-play-btn" id="play-btn" title="İlahiyi Başlat">▶</button>
             </div>
-            <div class="status-text" id="status-text">Müzikli ilahiyi başlatmak için dokun</div>
+            <div class="status-text" id="status-text">İlahiyi dinlemek için dokun</div>
         </div>
     </div>
 
@@ -303,20 +302,21 @@ Bis ilahi aşk kalpten silinmesin...
             } else {
                 window.speechSynthesis.cancel();
                 
-                // Arka plandaki dini müziği (jenerik müziği) başlat
+                // Arka plandaki dini jenerik müziği başlat
                 bgMusic.currentTime = 0;
-                bgMusic.play().catch(e => console.log("Müzik çalma engellendi: ", e));
+                bgMusic.volume = 0.4; // Müzik sesi vokalın altında kalacak şekilde dengelendi
+                bgMusic.play().catch(e => console.log("Müzik hatası: ", e));
 
-                // Üzerine ilahi okuma motorunu çalıştır
+                // İlahi vokal okuma motoru (Duygulu, yavaş ve makamlı ilahi tonu)
                 const ilahiMetni = lyricsDisplay.textContent;
                 speechUtterance = new SpeechSynthesisUtterance(ilahiMetni);
                 
                 speechUtterance.lang = 'tr-TR';
-                speechUtterance.rate = 0.76; 
-                speechUtterance.pitch = 0.78; 
+                speechUtterance.rate = 0.74; // İlahi ağırlığına uygun daha yavaş ve hazin tempo
+                speechUtterance.pitch = 0.75; // Derin ve tok ilahi sanatçısı tonu
 
                 playBtn.textContent = "⏸";
-                statusText.textContent = "Müzikli ilahi okunuyor...";
+                statusText.textContent = "İlahi okunuyor...";
                 artIcon.style.animation = "pulseArt 2s infinite alternate";
                 isPlaying = true;
 
