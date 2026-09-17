@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esmaül Hüsna - İlahi Uygulaması</title>
+    <title>Huzur Pınarı - İlahi Çalar</title>
     <style>
         * {
             margin: 0;
@@ -13,8 +13,12 @@
         }
 
         body {
-            background-color: #f4f6f9;
-            color: #333;
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             overflow-x: hidden;
         }
 
@@ -69,113 +73,113 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* --- ANA SAYFA --- */
+        /* --- MP3 ÇALAR ANA EKRANI --- */
         .hidden {
             display: none !important;
         }
 
-        .hero-section {
-            height: 220px;
-            background: linear-gradient(135deg, #1b3b4f, #091921);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-        }
-
-        .hero-overlay {
+        .player-container {
             width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .hero-overlay h1 {
-            font-size: 24px;
-            margin-bottom: 6px;
-            color: #f3e5ab;
-        }
-
-        .hero-overlay p {
-            font-size: 13px;
-            color: #cbd5e1;
-        }
-
-        /* İÇERİK ALANI */
-        .container {
-            max-width: 650px;
-            margin: -25px auto 30px auto;
-            padding: 0 15px;
-            position: relative;
-            z-index: 10;
-        }
-
-        .player-section {
-            background: #fff;
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+            max-width: 400px;
+            background: #1e293b;
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid #334155;
             text-align: center;
         }
 
-        .player-section h2 {
-            font-size: 20px;
-            color: #1b3b4f;
-            margin-bottom: 15px;
+        /* Albüm Kapağı / Logo */
+        .album-art {
+            width: 140px;
+            height: 140px;
+            background: linear-gradient(135deg, #d4af37, #85581a);
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            border: 4px solid #475569;
+            animation: pulseArt 4s infinite alternate;
         }
 
-        .lyrics-box {
-            background: #fdfbf7;
-            border-left: 4px solid #d4af37;
-            padding: 22px;
-            min-height: 160px;
-            max-height: 280px;
+        @keyframes pulseArt {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.03); }
+        }
+
+        /* Parça Bilgisi */
+        .track-info h2 {
+            font-size: 18px;
+            color: #f3e5ab;
+            margin-bottom: 8px;
+        }
+
+        .track-info p {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* İlahi Sözleri Ekranı (MP3 Çalar Şarkı Sözü Alanı) */
+        .lyrics-screen {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 15px;
+            height: 140px;
             overflow-y: auto;
             text-align: left;
-            font-size: 16px;
-            line-height: 1.8;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            border-radius: 6px;
-            white-space: pre-line;
-            font-weight: 500;
-        }
-
-        /* KONTROL BUTONLARI */
-        .controls {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .btn {
-            background-color: #1b3b4f;
-            color: white;
-            border: none;
-            padding: 12px 20px;
             font-size: 14px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-weight: 600;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            white-space: pre-line;
         }
 
-        .btn:hover {
-            background-color: #091921;
+        /* MP3 Çalar Kontrol Tuşları */
+        .player-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
         }
 
-        .btn.secondary {
-            background-color: #d4af37;
+        .ctrl-btn {
+            background: #334155;
             color: #fff;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .btn.secondary:hover {
-            background-color: #b8972b;
+        .ctrl-btn:hover {
+            background: #475569;
+        }
+
+        .play-pause-btn {
+            background: #d4af37;
+            color: #0f172a;
+            width: 65px;
+            height: 65px;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .play-pause-btn:hover {
+            background: #e6c55c;
         }
     </style>
 </head>
@@ -186,37 +190,36 @@
         <div class="splash-content">
             <div class="app-icon">☪</div>
             <h1>Huzur Pınarı</h1>
-            <p>Esmaül Hüsna İlahileri</p>
+            <p>İlahi Çalar</p>
         </div>
     </div>
 
-    <!-- ANA SAYFA -->
+    <!-- MP3 ÇALAR ARAYÜZÜ -->
     <div id="main-content" class="hidden">
-        <header class="hero-section">
-            <div class="hero-overlay">
-                <h1>Esmaül Hüsna İlahi Halkası</h1>
-                <p>Allah'ın Mübarek İsimleriyle Kalplere Şifa</p>
+        <div class="player-container">
+            <div class="album-art">☪</div>
+            
+            <div class="track-info">
+                <h2 id="track-title">Yükleniyor...</h2>
+                <p>Esmaül Hüsna İlahisi</p>
             </div>
-        </header>
 
-        <main class="container">
-            <section class="player-section">
-                <h2 id="ilahi-title">Yükleniyor...</h2>
-                
-                <div class="lyrics-box" id="lyrics-content">
-                    İlahi sözleri hazırlanıyor...
-                </div>
+            <!-- Şarkı Sözleri Penceresi -->
+            <div class="lyrics-screen" id="lyrics-text">
+                İlahi sözleri yükleniyor...
+            </div>
 
-                <div class="controls">
-                    <button id="play-btn" class="btn">▶ İlahiyi Sesli Oku / Dinle</button>
-                    <button id="next-btn" class="btn secondary">Sonraki İsimlere Geç ➡</button>
-                </div>
-            </section>
-        </main>
+            <!-- Çalar Tuşları (Önceki, Oynat/Durdur, Sonraki) -->
+            <div class="player-controls">
+                <button class="ctrl-btn" id="prev-btn" title="Önceki İlahi">⏮</button>
+                <button class="ctrl-btn play-pause-btn" id="play-btn" title="Oynat / Durdur">▶</button>
+                <button class="ctrl-btn" id="next-btn" title="Sonraki İlahi">⏭</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Giriş animasyonu (2.5 saniye sonra ana sayfayı açar)
+        // Giriş Animasyonu
         window.addEventListener('load', () => {
             setTimeout(() => {
                 const splash = document.getElementById('splash-screen');
@@ -228,79 +231,97 @@
             }, 2500);
         });
 
-        // Esmaül Hüsna ve İlahi Akışı
-        const esmaIlahileri = [
+        // İlahi Listesi (İstediğin gibi çoğaltabilir, sözleri değiştirebilirsin)
+        const ilahilerListesi = [
             {
-                title: "Giriş ve İlk İsimler: Allah, Rahman, Rahim",
-                text: "Dillerde ezan, kalpte iman,\nAnılır ismiyle her an.\nGel ey gönül zikreyle Rahman,\n\nYa Allah sen başımızda tacımız,\nYa Rahman sensin bütün ilacımız,\nYa Rahim merhametin derya deniz,\nSensiz bizim halimiz nice nice..."
+                title: "1. Bölüm: Allah, Rahman, Rahim",
+                lyrics: "Dillerde ezan, kalpte iman...\nAnılır ismiyle her an...\nGel ey gönül zikreyle Rahman...\n\nYa Allah sen başımızda tacımız,\nYa Rahman sensin bütün ilacımız,\nYa Rahim merhametin derya deniz..."
             },
             {
-                title: "Kaddüs, Selam ve Mümin İsimleri",
-                text: "El-Kuddüs, El-Selam nurunla doldu âlem,\nYazmaz bunu gayrı başka bir kalem.\n\nYa Kuddüs, kalpleri tertemiz eyle,\nYa Selam, selamete erdir bizi söyle,\nYa Mümin, inananların sığınağı sensin,\nKalplerdeki bu sönmeyen ışık sensin."
+                title: "2. Bölüm: Kaddüs ve Selam",
+                lyrics: "El-Kuddüs, El-Selam nurunla doldu âlem...\nYazmaz bunu gayrı başka bir kalem...\n\nYa Kuddüs, kalpleri tertemiz eyle,\nYa Selam, selamete erdir bizi söyle..."
             },
             {
-                title: "Aziz, Cebbar ve Mütekebbir İsimleri",
-                text: "Ya Aziz, yüceler yücesi şanlı sultan,\nSeninle dirilir mahlukat, canlanan!\n\nYa Cebbar, kırılan kalpleri onaran,\nYa Mütekebbir, büyüklük ancak sana yaraşan,\nZikrinle çarpar bu garip yürekler,\nKabul eyle Allah'ım bütün dilekler."
-            },
-            {
-                title: "Hâlık, Bari ve Musavvir İsimleri",
-                text: "Yarattın bu kâinatı en güzel biçimde,\nHâlık sensin bu varlık denizinde.\n\nYa Hâlık, Ya Bari, Ya Musavvir,\nGüzelliğin eseri her yerde aşikâr, munis ve bir!\nEsmaül Hüsna dillerden düşmesin,\nBu ilahi aşk kalpten hiç silinmesin..."
+                title: "3. Bölüm: Aziz ve Cebbar",
+                lyrics: "Ya Aziz, yüceler yücesi şanlı sultan,\nSeninle dirilir mahlukat, canlanan!\n\nYa Cebbar, kırılan kalpleri onaran,\nZikrinle çarpar bu garip yürekler..."
             }
         ];
 
         let currentIndex = 0;
-        const titleElement = document.getElementById('ilahi-title');
-        const lyricsElement = document.getElementById('lyrics-content');
+        let isPlaying = false;
+        
+        const titleEl = document.getElementById('track-title');
+        const lyricsEl = document.getElementById('lyrics-text');
         const playBtn = document.getElementById('play-btn');
         const nextBtn = document.getElementById('next-btn');
+        const prevBtn = document.getElementById('prev-btn');
 
-        function updateContent() {
-            titleElement.textContent = esmaIlahileri[currentIndex].title;
-            lyricsElement.textContent = esmaIlahileri[currentIndex].text;
+        function loadTrack() {
+            titleEl.textContent = ilahilerListesi[currentIndex].title;
+            lyricsEl.textContent = ilahilerListesi[currentIndex].lyrics;
         }
 
-        updateContent();
+        loadTrack();
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % esmaIlahileri.length;
-            updateContent();
-            
-            if ('speechSynthesis' in window) {
-                window.speechSynthesis.cancel();
-                playBtn.textContent = "▶ İlahiyi Sesli Oku / Dinle";
+        // Saf İnsan/İlahi Tonu Simülasyonu (Metni ilahi temposunda okuma)
+        function togglePlay() {
+            if (!('speechSynthesis' in window)) {
+                alert("Tarayıcınız ses motorunu desteklemiyor.");
+                return;
             }
+
+            if (isPlaying) {
+                window.speechSynthesis.cancel();
+                isPlaying = false;
+                playBtn.textContent = "▶";
+            } else {
+                window.speechSynthesis.cancel();
+                
+                // İlahi formuna uygun tonlama için metni düzenliyoruz
+                const ilahiMetni = ilahilerListesi[currentIndex].title + "... " + ilahilerListesi[currentIndex].lyrics;
+                const utterance = new SpeechSynthesisUtterance(ilahiMetni);
+                
+                utterance.lang = 'tr-TR';
+                utterance.rate = 0.78; // Daha ağır, ilahi makamına yakın yavaşlıkta
+                utterance.pitch = 0.8; // Daha tok, huzurlu bir ses tonu
+
+                playBtn.textContent = "⏸";
+                isPlaying = true;
+
+                utterance.onend = () => {
+                    isPlaying = false;
+                    playBtn.textContent = "▶";
+                };
+
+                utterance.onerror = () => {
+                    isPlaying = false;
+                    playBtn.textContent = "▶";
+                };
+
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        playBtn.addEventListener('click', togglePlay);
+
+        // Sonraki Parça
+        nextBtn.addEventListener('click', () => {
+            window.speechSynthesis.cancel();
+            isPlaying = false;
+            playBtn.textContent = "▶";
+            
+            currentIndex = (currentIndex + 1) % ilahilerListesi.length;
+            loadTrack();
         });
 
-        playBtn.addEventListener('click', () => {
-            if (!('speechSynthesis' in window)) {
-                alert("Tarayıcınız seslendirme özelliğini desteklemiyor.");
-                return;
-            }
-
-            if (window.speechSynthesis.speaking) {
-                window.speechSynthesis.cancel();
-                playBtn.textContent = "▶ İlahiyi Sesli Oku / Dinle";
-                return;
-            }
-
-            const metin = titleElement.textContent + ". " + lyricsElement.textContent;
-            const utterance = new SpeechSynthesisUtterance(metin);
+        // Önceki Parça
+        prevBtn.addEventListener('click', () => {
+            window.speechSynthesis.cancel();
+            isPlaying = false;
+            playBtn.textContent = "▶";
             
-            utterance.lang = 'tr-TR';
-            utterance.rate = 0.82; // Yavaş ve huzurlu ilahi temposu
-            utterance.pitch = 0.85; // Tok ses tonu
-
-            playBtn.textContent = "⏸ Durdur";
-
-            utterance.onend = () => {
-                playBtn.textContent = "▶ İlahiyi Sesli Oku / Dinle";
-            };
-
-            utterance.onerror = () => {
-                playBtn.textContent = "▶ İlahiyi Sesli Oku / Dinle";
-            };
-
-            window.speechSynthesis.speak(utterance);
+            currentIndex = (currentIndex - 1 + ilahilerListesi.length) % ilahilerListesi.length;
+            loadTrack();
         });
     </script>
 </body>
